@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ARPGDemo.Character.CharacterAnimationParamater">
+    <Position X="3.25" Y="2.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAQAAAAAAAAABAAwAAAAAAACAAIAAAAAA=</HashCode>
+      <FileName>Assets\Scriptes\Characte\CharacterAnimationParamater.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ARPGDemo.Character.CharacterInputController">
+    <Position X="1" Y="2.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>BAgABAAAAAEAAAAAAAAgAAAAAAAQAAAIAAAAAAAACEg=</HashCode>
+      <FileName>Assets\Scriptes\Characte\CharacterInputController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ARPGDemo.Character.CharacterMotor">
+    <Position X="6" Y="2.25" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAECAAAAAABAAAAACAABAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Assets\Scriptes\Characte\CharacterMotor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ARPGDemo.Character.PlayerStatus">
+    <Position X="9.5" Y="2.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scriptes\Characte\PlayerStatus.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="微软雅黑" Size="9" />
+</ClassDiagram>
