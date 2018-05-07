@@ -53,6 +53,7 @@ namespace ARPGDemo.Character
         //当拖动遥感时调用
         private void OnJoystickMove(Vector2 arg0)
         {
+            if (!OnAttackStatus()) return;
             if (arg0.sqrMagnitude > 0.3f)
             {
                 animator.SetBool(playersStatus.animParams.walk, true);
@@ -63,7 +64,7 @@ namespace ARPGDemo.Character
                 animator.SetBool(playersStatus.animParams.walk, true);
                 animator.SetBool(playersStatus.animParams.run, false);
             }
-            moter.Movement(new Vector3(arg0.x,0,arg0.y));
+            moter.Movement(new Vector3(arg0.x, 0, arg0.y));
         }
 
         private void OnJoystickMoveStart()
@@ -99,6 +100,16 @@ namespace ARPGDemo.Character
             animator.SetBool(playersStatus.animParams.attack1, false);
             animator.SetBool(playersStatus.animParams.attack2, false);
             animator.SetBool(playersStatus.animParams.attack3, false);
+        }
+
+        /// <summary>
+        /// 判断人物是否在攻击状态
+        /// </summary>
+        /// <returns></returns>
+        private bool OnAttackStatus() {
+            return !animator.GetCurrentAnimatorStateInfo(0).IsName("swordStrike1") &&
+                !animator.GetCurrentAnimatorStateInfo(0).IsName("swordStrike2") &&
+                !animator.GetCurrentAnimatorStateInfo(0).IsName("swordStrike3");
         }
     }
 }
