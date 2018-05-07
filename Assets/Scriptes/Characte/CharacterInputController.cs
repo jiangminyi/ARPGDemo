@@ -84,6 +84,7 @@ namespace ARPGDemo.Character
             switch (arg0)
             {
                 case "BaseButton":
+                    playersStatus.OnDemage(20);
                     animator.SetBool(playersStatus.animParams.attack1, true);
                     break;
                 case "SkillButton01":

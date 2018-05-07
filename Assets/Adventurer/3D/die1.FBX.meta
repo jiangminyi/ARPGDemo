@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 765dfc8fcb61d6a4989e160760f67201
 ModelImporter:
-  serializedVersion: 21
+  serializedVersion: 22
   fileIDToRecycleName:
     100000: adventurer
     100002: Bip01
@@ -97,10 +97,17 @@ ModelImporter:
     9500000: //RootNode
     11100000: //RootNode
     13700000: adventurer
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 01 - Default
+    second: {fileID: 2100000, guid: eeada033d3c600a4aa3341e9ea4a3254, type: 2}
   materials:
     importMaterials: 1
     materialName: 3
     materialSearch: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -108,23 +115,12 @@ ModelImporter:
     optimizeGameObjects: 0
     motionNodeName: 
     rigImportErrors: 
-    rigImportWarnings: "Avatar Rig Configuration mis-match. Bone length in configuration
-      does not match position in animation file:\n\t'Bip01 L Thigh' : position error
-      = 2.333085 mm\n\t'Bip01 R Thigh' : position error = 2.333165 mm\n\t'Bip01 R
-      Clavicle' : position error = 3.039207 mm\n\t'Bip01 L Clavicle' : position error
-      = 3.039555 mm\n"
+    rigImportWarnings: 
     animationImportErrors: 
-    animationImportWarnings: "\nClip 'Take 001' has import animation warnings that
-      might lower retargeting quality:\nNote: Activate translation DOF on avatar to
-      improve retargeting quality.\n\t'Bip01 Spine' has translation animation that
-      will be discarded.\n\t'Bip01 Spine' is inbetween humanoid transforms and has
-      rotation animation that will be discarded.\n\t'Bip01 L Thigh' has translation
-      animation that will be discarded.\n\t'Bip01 R Thigh' has translation animation
-      that will be discarded.\n\t'Bip01 R Clavicle' has translation animation that
-      will be discarded.\n\t'Bip01 L Clavicle' has translation animation that will
-      be discarded.\n"
+    animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
     animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
@@ -202,7 +198,7 @@ ModelImporter:
     feetSpacing: 0
     rootMotionBoneName: 
     rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
-    hasTranslationDoF: 0
+    hasTranslationDoF: 1
     hasExtraRoot: 1
     skeletonHasParents: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}

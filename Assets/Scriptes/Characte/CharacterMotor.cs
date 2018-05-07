@@ -14,7 +14,7 @@ namespace ARPGDemo.Character
         
         public float moveSpeed = 8F;
         public float gravity = 20.0F;
-        public CharacterController characterController;
+        private CharacterController characterController;
         private Vector3 moveDirection  =Vector3.zero;
 
         private void Start()
