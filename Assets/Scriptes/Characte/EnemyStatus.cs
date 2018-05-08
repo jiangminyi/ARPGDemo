@@ -8,14 +8,12 @@ namespace ARPGDemo.Character
 	/// <summary>
 	/// 角色状态类
 	/// </summary>
-	public class PlayerStatus : Status
-	{
+	public class EnemyStatus : Status
+    {
         public CharacterAnimationParamater animParams;
         private CharacterInputController inputController;
         private PlayerStatus playerStatus;
         private Animator animator;
-
-
 
         private void Start()
         {
@@ -24,23 +22,14 @@ namespace ARPGDemo.Character
             inputController = GetComponent<CharacterInputController>();
         }
 
-
         public override void OnDemage(float values)
         {
-            values -= defence;
-            if (values < 1f) values = 1;
-            HP -= values;
-            HP -= values;
-            if (HP <= 0)
-            {
-                Dead();
-            }
+            throw new NotImplementedException();
         }
 
         public override void Dead()
         {
-            animator.SetBool(playerStatus.animParams.death, true);
-            inputController.enabled = false;
+            throw new NotImplementedException();
         }
     }
 }

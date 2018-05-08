@@ -16,6 +16,7 @@ namespace ARPGDemo.Character
         private PlayerStatus playersStatus;
         private Animator animator;
         private ETCButton[] etcButtons;
+
         //查找角色
         private void Awake()
         {
@@ -84,14 +85,13 @@ namespace ARPGDemo.Character
             switch (arg0)
             {
                 case "BaseButton":
-                    playersStatus.OnDemage(20);
-                    animator.SetBool(playersStatus.animParams.attack1, true);
+                    Attack1();
                     break;
                 case "SkillButton01":
-                    animator.SetBool(playersStatus.animParams.attack2, true);
+                    Attack2();
                     break;
                 case "SkillButton02":
-                    animator.SetBool(playersStatus.animParams.attack3, true);
+                    Attack3();
                     break;
             }
         }
@@ -111,6 +111,19 @@ namespace ARPGDemo.Character
             return !animator.GetCurrentAnimatorStateInfo(0).IsName("swordStrike1") &&
                 !animator.GetCurrentAnimatorStateInfo(0).IsName("swordStrike2") &&
                 !animator.GetCurrentAnimatorStateInfo(0).IsName("swordStrike3");
+        }
+
+        private void Attack1() {
+            animator.SetBool(playersStatus.animParams.attack1, true);
+        }
+
+        private void Attack2()
+        {
+            animator.SetBool(playersStatus.animParams.attack2, true);
+        }
+        private void Attack3()
+        {
+            animator.SetBool(playersStatus.animParams.attack3, true);
         }
     }
 }

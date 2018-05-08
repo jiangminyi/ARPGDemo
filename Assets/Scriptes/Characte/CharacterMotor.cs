@@ -26,8 +26,8 @@ namespace ARPGDemo.Character
         public void LookAtTarget(Vector3 dir)
         {
             if (dir == Vector3.zero) return;
-                Quaternion targetDir = Quaternion.LookRotation(dir);
-                transform.rotation = Quaternion.Lerp(transform.rotation, targetDir, 0.8f);
+            Quaternion targetDir = Quaternion.LookRotation(dir);
+            transform.rotation = Quaternion.Lerp(transform.rotation, targetDir, 0.1f);
          }
 
         //向前移动
