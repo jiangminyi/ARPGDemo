@@ -24,7 +24,9 @@ namespace ARPGDemo.Character
 
         public override void OnDemage(float values)
         {
-            throw new NotImplementedException();
+            values -= defence;
+            if (values < 1) values = 1;
+            HP -= values;
         }
 
         public override void Dead()

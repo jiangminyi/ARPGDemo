@@ -16,6 +16,7 @@ namespace ARPGDemo.Character
         private PlayerStatus playersStatus;
         private Animator animator;
         private ETCButton[] etcButtons;
+        private BoxCollider sword;
 
         //查找角色
         private void Awake()
@@ -26,6 +27,17 @@ namespace ARPGDemo.Character
             playersStatus = GetComponent<PlayerStatus>();
             animator = GetComponentInChildren<Animator>();
             etcButtons = FindObjectsOfType<ETCButton>();
+            sword = GameObject.Find("sword").GetComponent<BoxCollider>();
+        }
+
+        private void Start()
+        {
+            sword.enabled = false;
+        }
+
+        private void Update()
+        {
+            IfAttackSetCollision();
         }
         //注册事件
         private void OnEnable()
@@ -113,6 +125,7 @@ namespace ARPGDemo.Character
                 !animator.GetCurrentAnimatorStateInfo(0).IsName("swordStrike3");
         }
 
+        //播放攻击动画
         private void Attack1() {
             animator.SetBool(playersStatus.animParams.attack1, true);
         }
@@ -124,6 +137,18 @@ namespace ARPGDemo.Character
         private void Attack3()
         {
             animator.SetBool(playersStatus.animParams.attack3, true);
+        }
+
+        //当在播放攻击动画时，激活word组件
+        private void IfAttackSetCollision() {
+            if (OnAttackStatus())
+            {
+                sword.enabled = false;
+            }
+            else
+            {
+                sword.enabled = true;
+            }
         }
     }
 }
