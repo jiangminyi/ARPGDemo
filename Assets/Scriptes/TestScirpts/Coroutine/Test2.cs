@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace xxx.xx{
     /// <summary>
-    /// adf
+    /// 
     /// </summary>
     public class Test2 : MonoBehaviour
     {
@@ -37,16 +37,20 @@ namespace xxx.xx{
         }
 
         public AnimationCurve curve;
-        public float times = 2;
+        public float speedTimes ;
         private float x;
-        private float y;
 
-        public  Color endColor;
+
+        public  Color endColor =Color.clear;
         private IEnumerator Fun3()
         {
-            for (x=0; x<1;x+=Time.deltaTime/times) {
-                y = curve.Evaluate(x);
-                material.color = Color.Lerp(material.color, endColor,y);
+            Color beginColor = material.color;
+            for (x=0; x<1;x+=Time.deltaTime/ 15) {
+                print(Time.deltaTime);
+                float y = curve.Evaluate(x);
+                print("x:" + x);
+                print("y:" + y);
+                material.color = Color.Lerp(beginColor, endColor,y);
                 yield return null;
             }
         }

@@ -26,11 +26,12 @@ namespace xxx.xx{
         }
 
         private IEnumerator SphereMoveMenthod(Vector3 targetPostion) {
+            Vector3 beginPostion = transform.position;
                 for (float x = 0; x < 1; x += Time.deltaTime/times)
                 {
                     y = curve.Evaluate(x);
                     transform.LookAt(targetPostion);
-                    transform.position = Vector3.Lerp(transform.position, targetPostion, y);
+                    transform.position = Vector3.Lerp(beginPostion, targetPostion, y);
                     yield return null;
                 }
         }
