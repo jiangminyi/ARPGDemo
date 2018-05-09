@@ -38,6 +38,8 @@ namespace ARPGDemo.Character
             moveDirection *= moveSpeed;
             moveDirection.y -= gravity * Time.deltaTime;
             characterController.Move(moveDirection * Time.deltaTime);
+
+           
             //向前移动
             //CharacterController
         }
