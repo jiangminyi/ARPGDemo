@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ARPGDemo.Skill;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,6 +18,7 @@ namespace ARPGDemo.Character
         private Animator animator;
         private ETCButton[] etcButtons;
         private BoxCollider sword;
+        private CharacterSkillManager playerSkills;
 
         //查找角色
         private void Awake()
@@ -28,6 +30,7 @@ namespace ARPGDemo.Character
             animator = GetComponentInChildren<Animator>();
             etcButtons = FindObjectsOfType<ETCButton>();
             sword = GameObject.Find("sword").GetComponent<BoxCollider>();
+            playerSkills = GetComponent<CharacterSkillManager>();
         }
 
         private void Start()
@@ -94,17 +97,24 @@ namespace ARPGDemo.Character
         }
         private void OnSkillButtonDown(string arg0)
         {
+            int id = 0;
             switch (arg0)
             {
                 case "BaseButton":
+                    id = 1001;
                     Attack1();
                     break;
                 case "SkillButton01":
+                    id = 1002;
                     Attack2();
                     break;
                 case "SkillButton02":
+                    id = 1003;
                     Attack3();
                     break;
+            }
+            if (playerSkills.PrepareSkill(id)!=null) {
+                playerSkills.GenerateSkill(playerSkills.PrepareSkill(id));
             }
         }
 

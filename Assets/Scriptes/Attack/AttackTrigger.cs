@@ -10,27 +10,25 @@ namespace ARPGDemo.Attack
 	/// </summary>
 	public class AttackTrigger : MonoBehaviour 
 	{
-        private Status targetstatus;
-        private Status sellStatus;
+        private CharacterStatus targetstatus;
+        private CharacterStatus sellStatus;
 
         private void OnTriggerEnter(Collider other)
         {
             targetstatus = GetTargerStatus(other);
             sellStatus = GetSellStatus();
-            print(targetstatus);
-            print(sellStatus);
             if (targetstatus && sellStatus) targetstatus.OnDemage(sellStatus.baseATK);
         }
 
         //获取目标者身上的状态
-        private Status GetTargerStatus(Collider other) {
-            return other.gameObject.GetComponent<Status>();
+        private CharacterStatus GetTargerStatus(Collider other) {
+            return other.gameObject.GetComponent<CharacterStatus>();
         }
 
         //获取自者身上的状态
-        private Status GetSellStatus()
+        private CharacterStatus GetSellStatus()
         {
-            return FindMostGameObject(gameObject).GetComponent<Status>();
+            return FindMostGameObject(gameObject).GetComponent<CharacterStatus>();
         }
 
         //找出最高级的父类

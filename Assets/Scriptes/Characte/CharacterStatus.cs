@@ -7,7 +7,7 @@ namespace ARPGDemo.Character
 	/// <summary>
 	/// 状态类
 	/// </summary>
-	public abstract class Status : MonoBehaviour 
+	public abstract class CharacterStatus : MonoBehaviour 
 	{
         private Animator animator;
         [Tooltip("血量")]

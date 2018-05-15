@@ -8,7 +8,7 @@ namespace ARPGDemo.Character
 	/// <summary>
 	/// 角色状态类
 	/// </summary>
-	public class PlayerStatus : Status
+	public class PlayerStatus : CharacterStatus
 	{
         public CharacterAnimationParamater animParams;
         private CharacterInputController inputController;
