@@ -1,37 +1,22 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace ARPGDemo.Character
 {
-	/// <summary>
-	/// 角色状态类
-	/// </summary>
-	public class EnemyStatus : CharacterStatus
+    /// <summary>
+    ///  敌人状态类
+    /// </summary>
+    public class EnemyStatus : CharacterStatus
     {
-        public CharacterAnimationParamater animParams;
-        private CharacterInputController inputController;
-        private PlayerStatus playerStatus;
-        private Animator animator;
-
-        private void Start()
+        /// <summary>
+        /// 死亡
+        /// </summary>
+        public override void Death()
         {
-            animator = GetComponentInChildren<Animator>();
-            playerStatus = GetComponent<PlayerStatus>();
-            inputController = GetComponent<CharacterInputController>();
-        }
+            base.Death();
 
-        public override void OnDemage(float values)
-        {
-            values -= defence;
-            if (values < 1) values = 1;
-            HP -= values;
-        }
-
-        public override void Dead()
-        {
-            throw new NotImplementedException();
+            Destroy(gameObject, 10);
         }
     }
 }

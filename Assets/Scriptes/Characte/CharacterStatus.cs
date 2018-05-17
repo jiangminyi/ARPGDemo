@@ -4,34 +4,67 @@ using UnityEngine;
 
 namespace ARPGDemo.Character
 {
-	/// <summary>
-	/// 状态类
-	/// </summary>
-	public abstract class CharacterStatus : MonoBehaviour 
-	{
-        private Animator animator;
-        [Tooltip("血量")]
-        public float HP;
-        [Tooltip("最大血量")]
-        public float maxHP;
-        [Tooltip("魔法值")]
-        public float SP;
-        [Tooltip("最大魔法值")]
-        public float maxSP;
-        [Tooltip("基础攻击力")]
-        public float baseATK;
-        [Tooltip("防御")]
-        public float defence;
-        [Tooltip("攻击间隔")]
-        public float attackInterval;
-        [Tooltip("攻击距离")]
+    /// <summary>
+    ///  
+    /// </summary>
+    public abstract class CharacterStatus : MonoBehaviour
+    {
+        public CharacterAnimationParamter animParams;
+
         public float attackDistance;
 
-        //被攻击
-        public abstract void OnDemage(float values);
+        public float attackInterval;
 
-        //死亡
-        public abstract void Dead(); 
-	}
+        public float baseATK;
+
+        [Tooltip("防御力")]
+        public float defence;
+
+        public float HP;
+
+        public float maxHP;
+
+        public float maxSP;
+
+        public float SP;
+
+        //protected  virtual void Start()
+        //{
+        //    print("初始化父类组件"); 
+        //}
+
+        protected void Start()
+        {
+            print("初始化父类组件");
+        }
+
+        /// <summary>
+        /// 受伤
+        /// </summary>
+        /// <param name="value"></param>
+        public void Damage(float value)
+        {
+            value -= defence;
+
+            if (value <= 0)
+                value = 1;
+
+            HP -= value;
+
+            if (HP <= 0)
+            {
+                Death();
+            }
+        }
+
+        /// <summary>
+        /// 死亡
+        /// </summary>
+        public virtual void Death()
+        {
+            GetComponentInChildren<Animator>().SetBool(animParams.death, true);
+        }
+
+    }
 }
 

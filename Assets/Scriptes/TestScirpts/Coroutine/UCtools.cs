@@ -32,8 +32,6 @@ public class UCtools : MonoBehaviour {
     private void Finddd( Transform[] transforms) {
         Transform[] ddfdf= transforms[0].GetComponentsInChildren<Transform>();
 
-        print(ddfdf.Length);
-
     }
 
     private static Transform FindChildForName(string objName,params Transform[] trans) {

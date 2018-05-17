@@ -9,7 +9,7 @@ namespace ARPGDemo.Common{
 	public class MonoSingleton<T> : MonoBehaviour where T: MonoSingleton<T>
     {
         private static T instance;
-        private static T Instance {
+        public static T Instance {
             get
                 {
                     instance = FindObjectOfType<T>();

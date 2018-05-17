@@ -21,7 +21,7 @@ namespace xxx.xx{
             //生成配置文件
             //文件名=路径
             //1、获取Resources目录下的文件
-            string[] resourceFiles =  AssetDatabase.FindAssets("t:Prefab t:Sprite", new string[] { "Assets/Resources" });
+            string[] resourceFiles =  AssetDatabase.FindAssets("t:Prefab t:Sprite t:TextAsset", new string[] { "Assets/Resources" });
             for (int i = 0; i < resourceFiles.Length; i++)
             {
                 string assetsPath = AssetDatabase.GUIDToAssetPath(resourceFiles[i]);

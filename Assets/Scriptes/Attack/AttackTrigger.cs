@@ -17,7 +17,7 @@ namespace ARPGDemo.Attack
         {
             targetstatus = GetTargerStatus(other);
             sellStatus = GetSellStatus();
-            if (targetstatus && sellStatus) targetstatus.OnDemage(sellStatus.baseATK);
+
         }
 
         //获取目标者身上的状态

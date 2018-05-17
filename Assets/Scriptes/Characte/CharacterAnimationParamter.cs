@@ -8,8 +8,8 @@ namespace ARPGDemo.Character
 	/// 动画参数类
 	/// </summary>
     [System.Serializable]//可序列化，可以在Unity编辑器中显示属性
-	public class CharacterAnimationParamater 
-	{
+	public class CharacterAnimationParamter
+    {
         public string run = "run";
         public string death = "death";
         public string idle = "idle";

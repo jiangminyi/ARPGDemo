@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
 using System;
+using Newtonsoft.Json;
 
 namespace ARPGDemo.Skill
 {
     /// 技能数据
     [Serializable]
+    [JsonObject(MemberSerialization.OptOut)]
     public class SkillData
     {
         ///<summary>技能ID</summary>
@@ -28,6 +30,7 @@ namespace ARPGDemo.Skill
         public string[] attackTargetTags = { "Enemy" };
         ///<summary>攻击目标对象数组</summary>
         [HideInInspector]//在编译中隐藏
+        [JsonIgnore]
         public Transform[] attackTargets;
         ///<summary>技能影响类型</summary> 
         public string[] impactType = { "CostSP", "Damage" };
@@ -41,11 +44,13 @@ namespace ARPGDemo.Skill
         public float atkInterval;
         ///<summary>技能所属</summary>
         [HideInInspector]
+        [JsonIgnore]
         public GameObject owner;
         ///<summary>技能预制件名称</summary>
         public string prefabName;
         ///<summary>预制件对象</summary>
         [HideInInspector]
+        [JsonIgnore]
         public GameObject skillPrefab;
         ///<summary>动画名称</summary> 
         public string animationName;
@@ -53,6 +58,7 @@ namespace ARPGDemo.Skill
         public string hitFxName;
         ///<summary>受击特效预制件</summary>
         [HideInInspector]
+        [JsonIgnore]
         public GameObject hitFxPrefab;
         ///<summary>技能等级</summary>
         public int level; 

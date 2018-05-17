@@ -1,46 +1,36 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace ARPGDemo.Character
 {
-	/// <summary>
-	/// 角色状态类
-	/// </summary>
-	public class PlayerStatus : CharacterStatus
-	{
-        public CharacterAnimationParamater animParams;
-        private CharacterInputController inputController;
-        private PlayerStatus playerStatus;
-        private Animator animator;
+    /// <summary>
+    ///  玩家状态类
+    /// </summary>
+    public class PlayerStatus : CharacterStatus
+    {
+        //隐藏方法：子类具有与父类相同签名的方法
 
+        //子类脚本生命周期隐藏了父类脚本生命周期
+        //protected override void Start()
+        //{
+        //    base.Start();
+        //    print("初始化子类组件");
+        //}
 
-
-        private void Start()
+        protected new void Start()
         {
-            animator = GetComponentInChildren<Animator>();
-            playerStatus = GetComponent<PlayerStatus>();
-            inputController = GetComponent<CharacterInputController>();
+            base.Start();
+            print("初始化子类组件");
         }
 
-
-        public override void OnDemage(float values)
+        /// <summary>
+        /// 死亡
+        /// </summary>
+        public override void Death()
         {
-            values -= defence;
-            if (values < 1f) values = 1;
-            HP -= values;
-            HP -= values;
-            if (HP <= 0)
-            {
-                Dead();
-            }
-        }
-
-        public override void Dead()
-        {
-            animator.SetBool(playerStatus.animParams.death, true);
-            inputController.enabled = false;
+            base.Death();
+            print("游戏结束");
         }
     }
 }

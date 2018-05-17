@@ -1,6 +1,8 @@
+SkillsConfig=ConfigTxt/SkillsConfig
 rune 10=FX/Player/rune 10
 selected=FX/Player/selected
 BaseMeleeAttackSkill=Skill/BaseMeleeAttackSkill
 CircleAttackSkill=Skill/CircleAttackSkill
 Hit_Ice_Chest=Skill/HitFx/Hit_Ice_Chest
 SectorAttackSkill=Skill/SectorAttackSkill
+Sphere=Sphere

@@ -111,6 +111,8 @@ namespace Common
             //求最大值
             for (int i = 0; i < array.Length; i++)
             {
+                Debug.Log((condition(min)));
+                Debug.Log(condition(array[i]));
                 if (condition(min).CompareTo(condition(array[i])) > 0)
                 {
                     min = array[i];
