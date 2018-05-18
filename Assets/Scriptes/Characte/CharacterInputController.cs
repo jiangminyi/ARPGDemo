@@ -18,7 +18,7 @@ namespace ARPGDemo.Character
         private Animator animator;
         private ETCButton[] etcButtons;
         private CharacterSkillManager playerSkills;
-
+        private CharacterSkillSystem skillSystem;
         //查找角色
         private void Awake()
         {
@@ -29,15 +29,9 @@ namespace ARPGDemo.Character
             animator = GetComponentInChildren<Animator>();
             etcButtons = FindObjectsOfType<ETCButton>();
             playerSkills = GetComponent<CharacterSkillManager>();
+            skillSystem = GetComponent<CharacterSkillSystem>();
         }
 
-        private void Start()
-        {
-        }
-
-        private void Update()
-        {
-        }
         //注册事件
         private void OnEnable()
         {
@@ -45,8 +39,12 @@ namespace ARPGDemo.Character
             joystick.onMoveStart.AddListener(OnJoystickMoveStart);
             joystick.onMoveEnd.AddListener(OnJoystickMoveEnd);
             for (int i = 0; i < etcButtons.Length; i++) {
-                etcButtons[i].onDown.AddListener(OnSkillButtonDown);
-                etcButtons[i].onUp.AddListener(OnSkillButtonUp);
+                if (etcButtons[i].name == "BaseButton") {
+                    etcButtons[i].onPressed.AddListener(OnSkillButtonPress);
+                }
+                else {
+                    etcButtons[i].onDown.AddListener(OnSkillButtonDown);
+                }
             }
         }
 
@@ -57,6 +55,14 @@ namespace ARPGDemo.Character
             joystick.onMove.RemoveListener(OnJoystickMove);
             joystick.onMoveStart.RemoveListener(OnJoystickMoveStart);
             joystick.onMoveEnd.RemoveListener(OnJoystickMoveEnd);
+            for (int i = 0; i < etcButtons.Length; i++)
+            {
+                if (etcButtons[i].name == "BaseButton")
+                    etcButtons[i].onPressed.RemoveListener(OnSkillButtonPress);
+                else {
+                    etcButtons[i].onDown.RemoveListener(OnSkillButtonDown);
+                }
+            }
 
         }
 
@@ -96,30 +102,29 @@ namespace ARPGDemo.Character
             int id = 0;
             switch (arg0)
             {
-                case "BaseButton":
-                    id = 1001;
-                    Attack1();
-                    break;
+                //case "BaseButton":
+                //    id = 1001;
+                //    ///Attack1();
+                //    break;
                 case "SkillButton01":
                     id = 1002;
-                    Attack2();
+                    //Attack2();
                     break;
                 case "SkillButton02":
                     id = 1003;
-                    Attack3();
+                    //Attack3();
                     break;
             }
-            if (playerSkills.PrepareSkill(id)!=null) {
-                playerSkills.GenerateSkill(playerSkills.PrepareSkill(id));
-            }
+            skillSystem.AttackUseSkill(id);
+
         }
 
-        private void OnSkillButtonUp()
-        {
-            animator.SetBool(playersStatus.animParams.attack1, false);
-            animator.SetBool(playersStatus.animParams.attack2, false);
-            animator.SetBool(playersStatus.animParams.attack3, false);
-        }
+        //private void OnSkillButtonUp()
+        //{
+        //    animator.SetBool(playersStatus.animParams.attack1, false);
+        //    animator.SetBool(playersStatus.animParams.attack2, false);
+        //    animator.SetBool(playersStatus.animParams.attack3, false);
+        //}
 
         /// <summary>
         /// 判断人物是否在攻击状态
@@ -143,6 +148,24 @@ namespace ARPGDemo.Character
         private void Attack3()
         {
             animator.SetBool(playersStatus.animParams.attack3, true);
+        }
+
+        private float prePressTime;
+
+        [Range(1,10)]
+        public float minAttackInterval = 1;
+
+        public float maxBatterTime = 3;
+        private void OnSkillButtonPress() {
+            float interval = Time.time - prePressTime;
+            //如果按下间隔过短，则退出。
+            if (interval < minAttackInterval) return;
+            //如果按下间隔较短，则连击。
+            //间隔 = 当前时间  - 上次时间
+            bool isBatter = interval < maxBatterTime; 
+            skillSystem.AttackUseSkill(1001, isBatter); 
+            prePressTime = Time.time;
+
         }
 
         //当在播放攻击动画时，激活word组件

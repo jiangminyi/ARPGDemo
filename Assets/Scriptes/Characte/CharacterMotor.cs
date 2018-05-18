@@ -13,7 +13,7 @@ namespace ARPGDemo.Character
         [Tooltip("旋转速度")]
         
         public float moveSpeed = 8F;
-        public float gravity = 20.0F;
+        public float gravity = 60.0F;
         private CharacterController characterController;
         private Vector3 moveDirection  =Vector3.zero;
 

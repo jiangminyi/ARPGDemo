@@ -37,7 +37,7 @@ namespace ARPGDemo.Skill
             return effectArr;
         }
 
-        private static T CreateObject<T>(string className) where T: class
+        public static T CreateObject<T>(string className) where T: class
         {
             if (!cache.ContainsKey(className)){
                 Type type = Type.GetType(className);
