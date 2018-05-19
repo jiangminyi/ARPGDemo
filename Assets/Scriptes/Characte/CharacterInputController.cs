@@ -57,11 +57,8 @@ namespace ARPGDemo.Character
             joystick.onMoveEnd.RemoveListener(OnJoystickMoveEnd);
             for (int i = 0; i < etcButtons.Length; i++)
             {
-                if (etcButtons[i].name == "BaseButton")
                     etcButtons[i].onPressed.RemoveListener(OnSkillButtonPress);
-                else {
                     etcButtons[i].onDown.RemoveListener(OnSkillButtonDown);
-                }
             }
 
         }

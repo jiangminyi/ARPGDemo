@@ -56,7 +56,7 @@ namespace ARPGDemo.Skill{
             if (data != null) {
                 if (data.attackType == SkillAttackType.Single) {
                     Transform[] tran= PitchOnTargetOnSkillData(data);
-                    if (tran[0]!=null) {
+                    if (tran != null&&tran[0]!=null) {
                         transform.LookAt(tran[0]);
                         tran[0].GetComponent<CharacterSelected>().SetSelectedActive(true);
 
@@ -128,7 +128,19 @@ namespace ARPGDemo.Skill{
             selected.SetSelectedActive(state);
         }            
 
-
+        
+        //练习1：完成普攻连击
+        //练习2：为NPC提供释放技能方法
+        //           随机 
+        public void UseRandomSkill()
+        {
+            //选出所有可以释放的技能 
+            //再随机选择一个
+            SkillData[] usableArr = skillManager.skills.FindAll(s => skillManager.PrepareSkill(s.skillID) != null);
+            if (usableArr.Length == 0) return;
+            int index = UnityEngine.Random.Range(0, usableArr.Length);
+            AttackUseSkill(usableArr[index].skillID);
+        } 
     }
 }
 
